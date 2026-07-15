@@ -2,7 +2,7 @@
 <html dir="rtl" lang="fa">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>👥 لیست کاربران - پیوند مودَّت</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
@@ -15,29 +15,30 @@
             font-family: 'Vazirmatn', 'Tahoma', sans-serif;
             background: linear-gradient(135deg, #B0E0E6 0%, #8BC4D0 100%);
             min-height: 100vh;
-            padding: 30px 20px;
+            padding: 15px 10px;
         }
 
         .container {
             max-width: 1300px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .page-header {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 25px 35px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 15px 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
         .page-header h1 {
             color: #004A7C;
-            font-size: 28px;
+            font-size: 20px;
             font-weight: bold;
         }
         .page-header h1 span {
@@ -45,24 +46,24 @@
         }
         .page-header .header-actions {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         .page-header .header-actions button {
             background: #004A7C;
             color: white;
             border: none;
-            padding: 10px 25px;
-            border-radius: 40px;
+            padding: 7px 16px;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: bold;
             transition: 0.3s;
             font-family: 'Vazirmatn', 'Tahoma', sans-serif;
         }
         .page-header .header-actions button:hover {
             background: #002f4a;
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
         .page-header .header-actions button.back-btn {
             background: #D4818A;
@@ -74,52 +75,45 @@
 
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
         }
         .stats-row .stat-card {
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 18px 20px;
+            border-radius: 16px;
+            padding: 12px 10px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-            border: 2px solid rgba(0, 74, 124, 0.15);
-            transition: 0.3s;
-        }
-        .stats-row .stat-card:hover {
-            transform: translateY(-3px);
-            border-color: #004A7C;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 74, 124, 0.1);
         }
         .stats-row .stat-card .number {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: bold;
             color: #004A7C;
         }
         .stats-row .stat-card .label {
-            font-size: 13px;
+            font-size: 11px;
             color: #666;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         .filter-area {
             background: rgba(255, 255, 255, 0.92);
-            border-radius: 25px;
-            padding: 20px 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
+            flex-direction: column;
+            gap: 12px;
         }
         .filter-area input {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px 20px;
+            width: 100%;
+            padding: 10px 16px;
             border: 2px solid #1A8A8A;
-            border-radius: 40px;
-            font-size: 14px;
+            border-radius: 30px;
+            font-size: 13px;
             font-family: 'Vazirmatn', 'Tahoma', sans-serif;
             background: white;
             transition: 0.3s;
@@ -127,24 +121,26 @@
         .filter-area input:focus {
             outline: none;
             border-color: #004A7C;
-            box-shadow: 0 0 0 3px rgba(0, 74, 124, 0.15);
+            box-shadow: 0 0 0 3px rgba(0, 74, 124, 0.12);
         }
         .filter-area .filter-buttons {
             display: flex;
-            gap: 10px;
             flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
         }
         .filter-area .filter-buttons button {
-            padding: 10px 22px;
+            padding: 6px 14px;
             border: 2px solid #004A7C;
-            border-radius: 40px;
+            border-radius: 30px;
             background: transparent;
             color: #004A7C;
             cursor: pointer;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 11px;
             transition: 0.3s;
             font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            white-space: nowrap;
         }
         .filter-area .filter-buttons button:hover,
         .filter-area .filter-buttons button.active {
@@ -162,22 +158,21 @@
 
         .users-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 25px;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
 
         .user-card {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 22px 25px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            border: 2px solid rgba(0, 74, 124, 0.08);
+            border-radius: 20px;
+            padding: 16px 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 74, 124, 0.06);
             transition: 0.3s;
-            position: relative;
         }
         .user-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             border-color: #004A7C;
         }
 
@@ -185,27 +180,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #f0f0f0;
         }
         .user-card .card-header .name {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: bold;
             color: #004A7C;
         }
         .user-card .card-header .gender-icon {
-            font-size: 28px;
+            font-size: 22px;
         }
 
         .user-card .badge {
             background: #004A7C;
             color: white;
-            padding: 3px 14px;
-            border-radius: 20px;
-            font-size: 11px;
+            padding: 2px 12px;
+            border-radius: 16px;
+            font-size: 10px;
             display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .user-card .badge.duplicate {
             background: #C5A200;
@@ -214,76 +209,101 @@
         .user-card .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px 15px;
-            font-size: 13px;
+            gap: 4px 10px;
+            font-size: 12px;
             color: #444;
-            line-height: 1.9;
+            line-height: 1.8;
         }
         .user-card .info-grid .full {
             grid-column: 1 / -1;
         }
         .user-card .info-grid strong {
             color: #222;
+            font-size: 11px;
         }
 
         .user-card .card-footer {
-            margin-top: 12px;
-            padding-top: 10px;
+            margin-top: 10px;
+            padding-top: 8px;
             border-top: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
+            font-size: 10px;
             color: #999;
+            flex-wrap: wrap;
+            gap: 4px;
         }
 
         .no-result {
             text-align: center;
-            padding: 60px 20px;
-            font-size: 18px;
+            padding: 40px 20px;
+            font-size: 16px;
             color: #666;
-            grid-column: 1 / -1;
         }
         .no-result .icon {
-            font-size: 60px;
+            font-size: 40px;
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .loading-area {
             text-align: center;
-            padding: 60px 20px;
-            font-size: 18px;
+            padding: 40px 20px;
+            font-size: 16px;
             color: #666;
         }
         .loading-area .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #e0e0e0;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e0e0e0;
             border-top-color: #004A7C;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin: 0 auto 15px;
+            margin: 0 auto 12px;
         }
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        @media (max-width: 768px) {
-            body { padding: 15px 10px; }
-            .page-header { padding: 18px 20px; flex-direction: column; text-align: center; }
+        /* ===== مخصوص تبلت ===== */
+        @media (min-width: 480px) and (max-width: 768px) {
+            body { padding: 20px 15px; }
             .page-header h1 { font-size: 22px; }
-            .users-grid { grid-template-columns: 1fr; }
-            .user-card .info-grid { grid-template-columns: 1fr; }
-            .filter-area { flex-direction: column; }
-            .filter-area input { width: 100%; }
-            .stats-row { grid-template-columns: 1fr 1fr; }
+            .users-grid { grid-template-columns: 1fr 1fr; }
+            .stats-row { grid-template-columns: repeat(4, 1fr); }
+            .user-card .info-grid { font-size: 12px; }
+            .filter-area { flex-direction: row; flex-wrap: wrap; }
+            .filter-area input { flex: 1; min-width: 150px; }
+            .filter-area .filter-buttons { flex: 1; justify-content: flex-start; }
         }
-        @media (max-width: 480px) {
-            .stats-row { grid-template-columns: 1fr; }
-            .page-header .header-actions button { width: 100%; }
-            .filter-area .filter-buttons { width: 100%; }
-            .filter-area .filter-buttons button { flex: 1; text-align: center; font-size: 12px; padding: 8px 12px; }
+
+        /* ===== مخصوص دسکتاپ ===== */
+        @media (min-width: 769px) {
+            body { padding: 30px 20px; }
+            .page-header { padding: 25px 35px; border-radius: 30px; }
+            .page-header h1 { font-size: 28px; }
+            .users-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+            .stats-row { grid-template-columns: repeat(4, 1fr); }
+            .filter-area { flex-direction: row; flex-wrap: wrap; }
+            .filter-area input { flex: 1; min-width: 200px; }
+            .user-card .info-grid { font-size: 13px; }
+            .user-card .info-grid strong { font-size: 12px; }
+        }
+
+        /* ===== گوشی‌های خیلی کوچک ===== */
+        @media (max-width: 360px) {
+            body { padding: 10px 6px; }
+            .page-header { padding: 12px 14px; }
+            .page-header h1 { font-size: 17px; }
+            .page-header .header-actions button { font-size: 10px; padding: 5px 12px; }
+            .stats-row .stat-card .number { font-size: 20px; }
+            .stats-row .stat-card .label { font-size: 10px; }
+            .user-card { padding: 14px 14px; }
+            .user-card .card-header .name { font-size: 15px; }
+            .user-card .info-grid { font-size: 11px; gap: 2px 6px; }
+            .user-card .info-grid strong { font-size: 10px; }
+            .filter-area .filter-buttons button { font-size: 10px; padding: 4px 10px; }
         }
     </style>
 </head>
@@ -294,8 +314,8 @@
     <div class="page-header">
         <h1>👥 <span>لیست</span> کاربران</h1>
         <div class="header-actions">
-            <button onclick="location.reload()">🔄 بروزرسانی</button>
-            <button onclick="location.href='index.html'" class="back-btn">🏠 بازگشت</button>
+            <button onclick="location.reload()">🔄</button>
+            <button onclick="location.href='index.html'" class="back-btn">🏠</button>
         </div>
     </div>
 
@@ -314,26 +334,26 @@
         </div>
         <div class="stat-card">
             <div class="number" id="decadeCount">0</div>
-            <div class="label">📅 دهه‌های مختلف</div>
+            <div class="label">📅 دهه‌ها</div>
         </div>
     </div>
 
     <div class="filter-area">
-        <input type="text" id="searchInput" placeholder="🔍 جستجو بر اساس استان، شهر، دهه..." oninput="filterUsers()">
+        <input type="text" id="searchInput" placeholder="🔍 جستجو..." oninput="filterUsers()">
         <div class="filter-buttons">
             <button class="active" data-filter="all" onclick="setFilter('all')">همه</button>
-            <button data-filter="دهه چهل و پنجاه" onclick="setFilter('دهه چهل و پنجاه')">دهه ۴۰ و ۵۰</button>
-            <button data-filter="دهه شصت" onclick="setFilter('دهه شصت')">دهه ۶۰</button>
-            <button data-filter="دهه هفتاد" onclick="setFilter('دهه هفتاد')">دهه ۷۰</button>
-            <button data-filter="دهه هشتاد" onclick="setFilter('دهه هشتاد')">دهه ۸۰</button>
-            <button class="clear-btn" onclick="clearFilters()">❌ پاک کردن</button>
+            <button data-filter="دهه چهل و پنجاه" onclick="setFilter('دهه چهل و پنجاه')">۴۰-۵۰</button>
+            <button data-filter="دهه شصت" onclick="setFilter('دهه شصت')">۶۰</button>
+            <button data-filter="دهه هفتاد" onclick="setFilter('دهه هفتاد')">۷۰</button>
+            <button data-filter="دهه هشتاد" onclick="setFilter('دهه هشتاد')">۸۰</button>
+            <button class="clear-btn" onclick="clearFilters()">✕</button>
         </div>
     </div>
 
     <div id="usersContainer" class="users-grid">
         <div class="loading-area">
             <div class="spinner"></div>
-            در حال بارگذاری اطلاعات...
+            در حال بارگذاری...
         </div>
     </div>
 
@@ -358,8 +378,7 @@
             document.getElementById('usersContainer').innerHTML = `
                 <div class="no-result">
                     <span class="icon">❌</span>
-                    خطا در بارگذاری اطلاعات.<br>
-                    لطفاً دوباره تلاش کنید.
+                    خطا در بارگذاری<br>لطفاً دوباره تلاش کنید
                 </div>
             `;
         }
@@ -412,7 +431,7 @@
             container.innerHTML = `
                 <div class="no-result">
                     <span class="icon">📭</span>
-                    هیچ کاربری با این مشخصات یافت نشد
+                    هیچ کاربری یافت نشد
                 </div>
             `;
             return;
@@ -435,45 +454,46 @@
                     <span class="badge ${badgeClass}">${user.decade || 'نامشخص'}</span>
 
                     <div class="info-grid">
-                        <div><strong>🚻 جنسیت:</strong> ${user.gender || '-'}</div>
-                        <div><strong>📍 استان:</strong> ${user.province || '-'}</div>
-                        <div><strong>🏙️ شهرستان:</strong> ${user.city || '-'}</div>
-                        <div><strong>📅 تولد:</strong> ${user.birthYear}/${user.birthMonth}/${user.birthDay}</div>
-                        <div><strong>📏 قد:</strong> ${user.height || '-'} سانتی‌متر</div>
-                        <div><strong>⚖️ وزن:</strong> ${user.weight || '-'} کیلوگرم</div>
-                        <div><strong>🎓 تحصیلات:</strong> ${user.selfEducation || '-'}</div>
-                        <div><strong>💼 شغل:</strong> ${user.jobType || '-'} ${user.jobDesc ? ' - ' + user.jobDesc : ''}</div>
-                        <div><strong>👔 شغل پدر:</strong> ${user.fatherJob || '-'}</div>
-                        <div><strong>👗 شغل مادر:</strong> ${user.motherJob || '-'}</div>
-                        <div><strong>🎨 رنگ پوست:</strong> ${user.skinColor || '-'}</div>
-                        <div><strong>👁️ رنگ چشم:</strong> ${user.eyeColor || '-'}</div>
-                        <div><strong>🧕 نوع پوشش:</strong> ${coverType}</div>
-                        <div><strong>🩺 وضعیت جسمی:</strong> ${user.physicalStatus || '-'}</div>
-                        ${user.disabilityDesc ? `<div class="full"><strong>📝 توضیحات معلولیت:</strong> ${user.disabilityDesc}</div>` : ''}
-                        <div><strong>🚬 دخانیات:</strong> ${user.smoking || '-'}</div>
-                        <div><strong>👨‍👩‍👧‍👦 تعداد خانواده:</strong> ${user.familyCount || '-'}</div>
-                        <div><strong>👶 فرزند چندم:</strong> ${user.childOrder || '-'}</div>
-                        <div><strong>💚 خصوصیات اخلاقی:</strong> ${user.personality || '-'}</div>
-                        <div class="full"><strong>🤵 معیار همسر:</strong> ${user.spouseCriteria || '-'}</div>
-                        <div><strong>💍 سابقه ازدواج:</strong> ${user.marriageHistory || '-'}</div>
-                        ${user.marriageDuration ? `<div><strong>⏳ مدت زندگی مشترک:</strong> ${user.marriageDuration}</div>` : ''}
-                        ${user.marriageRegistered ? `<div><strong>📄 ثبت در شناسنامه:</strong> ${user.marriageRegistered}</div>` : ''}
-                        ${user.childGender ? `<div><strong>👶 جنسیت فرزند:</strong> ${user.childGender} | سن: ${user.childAge || '-'}</div>` : ''}
-                        ${user.childCustody ? `<div class="full"><strong>📋 حضانت فرزند:</strong> ${user.childCustody}</div>` : ''}
-                        <div><strong>🗺️ استان‌های قابل قبول:</strong> ${user.acceptProvinces || '-'}</div>
-                        <div><strong>🏙️ شهرهای قابل قبول:</strong> ${user.acceptCities || '-'}</div>
-                        <div><strong>💼 شغل ایده‌آل همسر:</strong> ${user.spouseJobAccept || '-'}</div>
-                        ${user.freeJobDesc ? `<div class="full"><strong>📝 شغل آزاد مد نظر:</strong> ${user.freeJobDesc}</div>` : ''}
-                        <div><strong>📊 اختلاف سنی مطلوب:</strong> ${user.ageDiff || '-'}</div>
-                        <div><strong>📏 محدوده سنی:</strong> ${user.ageRange || '-'}</div>
-                        <div><strong>🎓 تحصیلات همسر:</strong> ${user.minEduSpouse || '-'}</div>
-                        <div><strong>💰 درآمد:</strong> ${user.income || '-'}</div>
-                        <div><strong>🏠 وضعیت دارایی:</strong> ${user.assets || '-'}</div>
-                        ${user.assetsDesc ? `<div class="full"><strong>📝 توضیح دارایی:</strong> ${user.assetsDesc}</div>` : ''}
-                        <div class="full"><strong>📝 توضیحات تکمیلی:</strong> ${user.moreInfo || '-'}</div>
-                        <div><strong>📞 نحوه ارتباط:</strong> ${user.contactMethod || '-'}</div>
-                        ${user.agentPhone ? `<div><strong>📞 شماره رابط:</strong> ${user.agentPhone}</div>` : ''}
-                        ${user.agentId ? `<div><strong>🆔 آیدی رابط:</strong> ${user.agentId}</div>` : ''}
+                        <div><strong>جنسیت:</strong> ${user.gender || '-'}</div>
+                        <div><strong>استان:</strong> ${user.province || '-'}</div>
+                        <div><strong>شهرستان:</strong> ${user.city || '-'}</div>
+                        <div><strong>تولد:</strong> ${user.birthYear}/${user.birthMonth}/${user.birthDay}</div>
+                        <div><strong>قد:</strong> ${user.height || '-'}</div>
+                        <div><strong>وزن:</strong> ${user.weight || '-'}</div>
+                        <div><strong>تحصیلات:</strong> ${user.selfEducation || '-'}</div>
+                        <div><strong>شغل:</strong> ${user.jobType || '-'}</div>
+                        ${user.jobDesc ? `<div class="full"><strong>شرح شغل:</strong> ${user.jobDesc}</div>` : ''}
+                        <div><strong>شغل پدر:</strong> ${user.fatherJob || '-'}</div>
+                        <div><strong>شغل مادر:</strong> ${user.motherJob || '-'}</div>
+                        <div><strong>رنگ پوست:</strong> ${user.skinColor || '-'}</div>
+                        <div><strong>رنگ چشم:</strong> ${user.eyeColor || '-'}</div>
+                        <div><strong>نوع پوشش:</strong> ${coverType}</div>
+                        <div><strong>وضعیت جسمی:</strong> ${user.physicalStatus || '-'}</div>
+                        ${user.disabilityDesc ? `<div class="full"><strong>توضیحات معلولیت:</strong> ${user.disabilityDesc}</div>` : ''}
+                        <div><strong>دخانیات:</strong> ${user.smoking || '-'}</div>
+                        <div><strong>تعداد خانواده:</strong> ${user.familyCount || '-'}</div>
+                        <div><strong>فرزند چندم:</strong> ${user.childOrder || '-'}</div>
+                        <div><strong>خصوصیات:</strong> ${user.personality || '-'}</div>
+                        <div class="full"><strong>معیار همسر:</strong> ${user.spouseCriteria || '-'}</div>
+                        <div><strong>سابقه ازدواج:</strong> ${user.marriageHistory || '-'}</div>
+                        ${user.marriageDuration ? `<div><strong>مدت زندگی مشترک:</strong> ${user.marriageDuration}</div>` : ''}
+                        ${user.marriageRegistered ? `<div><strong>ثبت در شناسنامه:</strong> ${user.marriageRegistered}</div>` : ''}
+                        ${user.childGender ? `<div><strong>فرزند:</strong> ${user.childGender} | سن: ${user.childAge || '-'}</div>` : ''}
+                        ${user.childCustody ? `<div class="full"><strong>حضانت:</strong> ${user.childCustody}</div>` : ''}
+                        <div><strong>استان‌های قابل قبول:</strong> ${user.acceptProvinces || '-'}</div>
+                        <div><strong>شهرهای قابل قبول:</strong> ${user.acceptCities || '-'}</div>
+                        <div><strong>شغل ایده‌آل همسر:</strong> ${user.spouseJobAccept || '-'}</div>
+                        ${user.freeJobDesc ? `<div class="full"><strong>شغل آزاد مد نظر:</strong> ${user.freeJobDesc}</div>` : ''}
+                        <div><strong>اختلاف سنی:</strong> ${user.ageDiff || '-'}</div>
+                        <div><strong>محدوده سنی:</strong> ${user.ageRange || '-'}</div>
+                        <div><strong>تحصیلات همسر:</strong> ${user.minEduSpouse || '-'}</div>
+                        <div><strong>درآمد:</strong> ${user.income || '-'}</div>
+                        <div><strong>وضعیت دارایی:</strong> ${user.assets || '-'}</div>
+                        ${user.assetsDesc ? `<div class="full"><strong>توضیح دارایی:</strong> ${user.assetsDesc}</div>` : ''}
+                        <div class="full"><strong>توضیحات تکمیلی:</strong> ${user.moreInfo || '-'}</div>
+                        <div><strong>نحوه ارتباط:</strong> ${user.contactMethod || '-'}</div>
+                        ${user.agentPhone ? `<div><strong>شماره رابط:</strong> ${user.agentPhone}</div>` : ''}
+                        ${user.agentId ? `<div><strong>آیدی رابط:</strong> ${user.agentId}</div>` : ''}
                     </div>
 
                     <div class="card-footer">
