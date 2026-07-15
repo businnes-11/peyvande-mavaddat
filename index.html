@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیوند مودَّت</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* ===== فونت بهمن ===== */
+        * {
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif !important;
+        }
+        body {
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            background: #B0E0E6;
+            min-height: 100vh;
+        }
+        .group-name, .highlight, .slogan, .form-title, .admin-card strong, .user-card .name {
+            font-family: 'Vazirmatn', 'B Titr', serif !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== اسپلش ===== */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #B0E0E6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            text-align: center;
+            padding: 10px 20px 20px;
+            overflow-y: auto;
+        }
+        #splash.hidden { display: none; }
+
+        /* ===== هدر ===== */
+        .splash-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            margin-top: 160px;
+            padding: 0 10px;
+        }
+        .splash-header img {
+            max-height: 280px;
+            width: auto;
+            border-radius: 15px;
+        }
+        .splash-header .new-image, .splash-header .qr-image {
+            border: 3px solid #004A7C;
+        }
+        .splash-header .qr-image {
+            background: white;
+            padding: 5px;
+        }
+
+        /* ===== عنوان ===== */
+        #splash .group-name {
+            font-size: 17px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 4px;
+            line-height: 2;
+        }
+        #splash .group-name .highlight {
+            font-size: 24px;
+            color: #004A7C;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ===== شعار ===== */
+        #splash .slogan {
+            font-size: 19px;
+            font-weight: bold;
+            color: #004A7C;
+            margin: 4px 0;
+        }
+
+        /* ===== تک همسری ===== */
+        #splash .monogamy {
+            font-size: 14px;
+            color: #222;
+            background: rgba(255,255,255,0.5);
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 4px 0;
+            border: 1px solid #004A7C;
+        }
+
+        /* ===== مجوز ===== */
+        #splash .license-box {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin: 4px 0;
+            border: 2px solid #004A7C;
+            display: inline-block;
+        }
+        #splash .license-box .license-text {
+            font-size: 14px;
+            color: #004A7C;
+            font-weight: bold;
+        }
+        #splash .license-box .license-code {
+            font-size: 13px;
+            color: #222;
+            direction: ltr;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        /* ===== آیه ===== */
+        #splash .ayah-box {
+            max-width: 750px;
+            margin: 4px auto;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 25px;
+        }
+        #splash .ayah {
+            font-size: 1.15rem;
+            line-height: 2.1;
+            color: #222;
+        }
+        #splash .ayah .blue-word {
+            color: #004A7C;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        #splash .ayah-ref {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 2px;
+            display: block;
+        }
+        #splash .translation {
+            font-size: 0.95rem;
+            color: #333;
+            max-width: 750px;
+            margin: 4px auto 0;
+            line-height: 1.9;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        /* ===== دکمه ورود ===== */
+        #splash .enter-btn {
+            background: #004A7C;
+            color: white;
+            border: none;
+            padding: 12px 45px;
+            border-radius: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 8px 0;
+            box-shadow: 0 4px 15px rgba(0, 74, 124, 0.3);
+        }
+        #splash .enter-btn:hover {
+            background: #002f4a;
+            transform: scale(1.05);
+        }
+
+        /* ===== کانال‌ها ===== */
+        .splash-channels {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .splash-channels .channel-box {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+        .splash-channels .channel-box a {
+            color: #004A7C;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .splash-channels .channel-box .channel-label {
+            font-weight: bold;
+            color: #004A7C;
+        }
+        .splash-channels .invite-text {
+            font-size: 13px;
+            color: #222;
+            margin-bottom: 2px;
+        }
+
+        /* ===== فرم ===== */
+        #mainContent {
+            display: none;
+            max-width: 950px;
+            margin: 15px auto;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 35px;
+            padding: 20px 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        #mainContent.active { display: block; }
+
+        .form-title {
+            text-align: center;
+            color: #004A7C;
+            margin-bottom: 5px;
+            font-size: 22px;
+        }
+        .form-sub {
+            text-align: center;
+            color: #444;
+            margin-bottom: 18px;
+            font-size: 12px;
+            border-bottom: 2px dashed #004A7C;
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-group label {
+            width: 160px;
+            font-weight: bold;
+            color: #222;
+            font-size: 12.5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            flex: 1;
+            padding: 6px 10px;
+            border: 2px solid #1A8A8A;
+            border-radius: 22px;
+            background: #fffcf7;
+            font-size: 12.5px;
+            color: #222;
+            transition: 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #004A7C;
+            box-shadow: 0 0 0 3px rgba(0, 74, 124, 0.2);
+        }
+
+        .double-field {
+            flex: 1;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .double-field input {
+            flex: 1;
+            border: 2px solid #1A8A8A;
+        }
+        .double-field input:focus {
+            border-color: #004A7C;
+            box-shadow: 0 0 0 3px rgba(0, 74, 124, 0.2);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 3px 0;
+            width: 100%;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #004A7C;
+            flex: 0 0 auto;
+        }
+        .checkbox-group label {
+            font-weight: normal;
+            font-size: 13px;
+            color: #222;
+            cursor: pointer;
+        }
+        .checkbox-group label strong {
+            color: #004A7C;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .form-group small {
+            width: 100%;
+            text-align: right;
+            color: #666;
+            font-size: 12px;
+            margin-right: 160px;
+        }
+
+        /* ===== دکمه‌ها ===== */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+        .btn-group button {
+            background: #D4818A;
+            color: #222;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 35px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-group button:hover {
+            background: #c06a73;
+            transform: translateY(-2px);
+        }
+        .btn-group button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status {
+            padding: 10px;
+            border-radius: 25px;
+            margin: 12px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .success {
+            background: #d9f0da;
+            color: #2a6817;
+            border-right: 5px solid #2a6817;
+        }
+        .error {
+            background: #ffe0dc;
+            color: #b33;
+            border-right: 5px solid #b33;
+        }
+        .loading {
+            background: #e3f0ff;
+            color: #004A7C;
+            border-right: 5px solid #004A7C;
+        }
+
+        .conditional-field { display: none; }
+        .conditional-field.active { display: flex; flex-wrap: wrap; }
+
+        /* ===== مودال ===== */
+        #rulesModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        #rulesModal .modal-box {
+            background: white;
+            max-width: 750px;
+            padding: 25px 30px;
+            border-radius: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: right;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        #rulesModal .modal-box h2 {
+            color: #004A7C;
+            margin-bottom: 15px;
+            font-size: 24px;
+            border-bottom: 2px solid #004A7C;
+            padding-bottom: 10px;
+        }
+        #rulesModal .modal-box .rules-text {
+            line-height: 2;
+            font-size: 14px;
+            color: #222;
+        }
+        #rulesModal .modal-box .rules-text .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #004A7C;
+            margin-top: 15px;
+            display: block;
+            border-right: 4px solid #004A7C;
+            padding-right: 10px;
+        }
+        #rulesModal .modal-box .rules-text .highlight { color: #004A7C; font-weight: bold; }
+        #rulesModal .modal-box .rules-text .warning { color: #b33; font-weight: bold; }
+        #rulesModal .modal-box .rules-text .number-list {
+            list-style: none;
+            padding-right: 15px;
+        }
+        #rulesModal .modal-box .rules-text .number-list li::before {
+            content: "🔹 ";
+            color: #004A7C;
+            font-weight: bold;
+        }
+        #rulesModal .modal-box .rules-text .red-line {
+            background: #fff0ee;
+            padding: 12px 15px;
+            border-radius: 15px;
+            border-right: 5px solid #b33;
+            margin: 10px 0;
+        }
+        #rulesModal .modal-box .rules-text .blue-box {
+            background: #f0f7ff;
+            padding: 12px 15px;
+            border-radius: 15px;
+            border-right: 5px solid #004A7C;
+            margin: 10px 0;
+        }
+        #rulesModal .modal-box .rules-text .green-box {
+            background: #f0faf0;
+            padding: 12px 15px;
+            border-radius: 15px;
+            border-right: 5px solid #2c7a4d;
+            margin: 10px 0;
+        }
+        #rulesModal .modal-box .close-btn {
+            margin-top: 20px;
+            background: #D4818A;
+            color: #222;
+            border: none;
+            padding: 10px 35px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        #rulesModal .modal-box .close-btn:hover {
+            background: #c06a73;
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 700px) {
+            .form-group label { width: 100%; }
+            .splash-header img { max-height: 160px; }
+            .form-group small { margin-right: 0; }
+            #splash .group-name .highlight { font-size: 20px; }
+            #splash .slogan { font-size: 16px; }
+            #splash .ayah { font-size: 1rem; }
+            #splash .ayah .blue-word { font-size: 1.15rem; }
+            #splash .translation { font-size: 0.85rem; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .form-group { gap: 5px; }
+            .form-group label { font-size: 12px; }
+            .form-group input, .form-group select, .form-group textarea { font-size: 12px; padding: 5px 8px; }
+            #mainContent { padding: 15px; }
+            #rulesModal .modal-box { padding: 20px; max-width: 100%; margin: 10px; max-height: 85vh; }
+            #splash .enter-btn { font-size: 15px; padding: 10px 30px; }
+            .splash-header { gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== اسپلش ===== -->
+    <div id="splash">
+        <div class="splash-header">
+            <img src="https://www.beytoote.com/images/stories/fun/fun2239.jpg" alt="بسم الله" class="bismillah-img">
+            <img src="./file_000000000a5071f4b2d96c949aa3e3e3.png" alt="تشکل جهادی" class="new-image">
+            <img src="./photo_2026-07-01_21-36-40.jpg" alt="QR Code" class="qr-image">
+        </div>
+
+        <div class="group-name">
+            تشکل جهادی و مردم‌نهاد
+            <span class="highlight">پیوند مودَّت</span>
+        </div>
+
+        <div class="slogan">💚 مودت انتخابی آگاهانه و پایدار 💚</div>
+        <div class="monogamy">✅ این مجموعه فقط در راستای ازدواج دائمی و تک‌همسری فعالیت می‌کند</div>
+
+        <div class="license-box">
+            <span class="license-text">✅ دارای مجوز رسمی</span>
+            <span class="license-code">۳۲۸۰۴۰۰۹۳ | ۷۶۴۰۴۴۵۵</span>
+        </div>
+
+        <div class="ayah-box">
+            <div class="ayah">
+                وَ مِنْ آیاتِهی اَنْ خَلَقَ لَکُمْ مِّنْ اَنْفُسِکُمْ اَزْواجًا لِّتَسْکُنُوا اِلَیْها<br>
+                وَ جَعَلَ بَیْنَکُمْ <span class="blue-word">مَوَدَّةً</span> وَ رَحْمَةً
+            </div>
+            <span class="ayah-ref">(سوره روم، آیه ۲۱)</span>
+        </div>
+        <div class="translation">
+            «و از نشانه‌های لطف الهی آن است که برای شما، از جنس خودتان، همسرانی آفرید تا در کنارشان آرامش یابید و با آن‌ها انس و الفت بگیرید؛ و میان شما محبت و مهربانی قرار داد.»
+        </div>
+
+        <button class="enter-btn" onclick="enterForm()">📝 ورود به فرم ثبت نام</button>
+
+        <div class="splash-channels">
+            <div class="invite-text">🌹 برای اطلاع از اخبار، برنامه‌ها و ارتباط با ما، در کانال‌های زیر عضو شوید:</div>
+            <div class="channel-box">
+                <span class="channel-label">📢 کانال ایتا پیوند مودَّت:</span>
+                <a href="https://eitaa.com/mardomnahadddd" target="_blank">https://eitaa.com/mardomnahadddd</a>
+            </div>
+            <div class="channel-box">
+                <span class="channel-label">🎙️ رادیو مودت:</span>
+                <a href="https://eitaa.com/joinchat/473761374C81557f7af6" target="_blank">https://eitaa.com/joinchat/473761374C81557f7af6</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== فرم ===== -->
+    <div id="mainContent" class="container">
+        <h1 class="form-title">📝 پیوند مودَّت</h1>
+        <div class="form-sub">فرم جامع همسان‌گزینی (اطلاعات در گوگل شیت ذخیره میشود)</div>
+
+        <form id="mainForm">
+            <!-- جنسیت -->
+            <div class="form-group">
+                <label>جنسیت :</label>
+                <select id="gender" required onchange="updateSpouseJobOptions(); toggleWomenCoverField();">
+                    <option value="">انتخاب</option>
+                    <option>مرد</option>
+                    <option>زن</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>نام و نام خانوادگی :</label><input type="text" id="fullname" placeholder="مثال: رضا کریمی" required></div>
+
+            <!-- ===== فیلد سال تولد با مقدار اولیه 13 ===== -->
+            <div class="form-group">
+                <label>تاریخ تولد :</label>
+                <div class="double-field">
+                    <input type="number" id="birthYear" placeholder="مثلاً ۱۳۵۷" value="13" required>
+                    <input type="number" id="birthMonth" placeholder="ماه 1-12" min="1" max="12" required>
+                    <input type="number" id="birthDay" placeholder="روز 1-31" min="1" max="31" required>
+                </div>
+                <small>💡 سال را با ۱۳ شروع کنید (مثلاً ۱۳۵۷)</small>
+            </div>
+
+            <!-- ===== ۴ فیلد با مقدار خالی ===== -->
+            <div class="form-group"><label>قد (سانتی‌متر) :</label><input type="number" id="height" placeholder="مثلاً ۱۷۵" required></div>
+            <div class="form-group"><label>وزن (کیلوگرم) :</label><input type="number" id="weight" placeholder="مثلاً ۷۰" required></div>
+
+            <div class="form-group"><label>مذهب :</label><select id="religion" required><option value="">انتخاب</option><option>سنی</option><option>شیعه</option></select></div>
+
+            <div class="form-group"><label>شغل پدر :</label><input type="text" id="fatherJob" required></div>
+            <div class="form-group"><label>شغل مادر :</label><input type="text" id="motherJob" required></div>
+            <div class="form-group"><label>رنگ پوست :</label><select id="skinColor" required><option value="">انتخاب</option><option>سفید</option><option>سبزه</option><option>گندمی</option><option>تیره</option></select></div>
+            <div class="form-group"><label>رنگ چشم :</label><select id="eyeColor" required><option value="">انتخاب</option><option>قهوه‌ای</option><option>مشکی</option><option>فندقی</option><option>سبز</option><option>آبی</option></select></div>
+
+            <!-- ===== فیلد پوشش خانم‌ها ===== -->
+            <div class="form-group conditional-field" id="womenCoverField">
+                <label>نوع پوشش :</label>
+                <select id="womenCover">
+                    <option value="">انتخاب</option>
+                    <option>چادری و عبا</option>
+                    <option>مانتویی و محجبه</option>
+                    <option>معمولی</option>
+                </select>
+            </div>
+
+            <!-- ===== فیلد پوشش آقایان ===== -->
+            <div class="form-group conditional-field" id="dressCodeField">
+                <label>نوع پوشش :</label>
+                <select id="dressCode" required>
+                    <option value="">انتخاب</option>
+                    <option>مذهبی</option>
+                    <option>مدرن</option>
+                    <option>اسپرت</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>شغل :</label><select id="jobType" required><option value="">انتخاب</option><option>کارمند دولتی</option><option>کارمند خصوصی</option><option>شغل آزاد</option></select></div>
+            <div class="form-group"><label>شرح شغل :</label><textarea id="jobDesc" rows="1" placeholder="اختیاری"></textarea></div>
+
+            <div class="form-group"><label>وضعیت جسمی :</label><select id="physicalStatus" required onchange="toggleDisabilityField()"><option value="">انتخاب</option><option>سالم</option><option>معلول</option></select></div>
+            <div class="form-group conditional-field" id="disabilityField"><label>توضیحات معلولیت :</label><textarea id="disabilityDesc" rows="2" placeholder="لطفاً توضیح دهید..."></textarea></div>
+
+            <div class="form-group"><label>اهل دخانیات :</label><select id="smoking" required><option value="">انتخاب</option><option>خیر</option><option>بله سیگار</option><option>بله قلیان</option><option>بله هردو</option></select></div>
+
+            <!-- ===== تعداد افراد خانواده و فرزند چندم (خالی) ===== -->
+            <div class="form-group"><label>تعداد افراد خانواده :</label><input type="number" id="familyCount" placeholder="مثلاً ۵" required></div>
+            <div class="form-group"><label>فرزند چندم :</label><input type="number" id="childOrder" placeholder="مثلاً ۲" required></div>
+
+            <div class="form-group"><label>استان محل سکونت :</label><input type="text" id="province" required></div>
+            <div class="form-group"><label>شهرستان :</label><input type="text" id="city" required></div>
+            <div class="form-group"><label>روستا/محله :</label><input type="text" id="neighborhood" required></div>
+            <div class="form-group"><label>شماره تماس ۱ :</label><input type="tel" id="phone1" placeholder="09123456789" required></div>
+            <div class="form-group"><label>شماره تماس ۲ :</label><input type="tel" id="phone2" placeholder="09123456789"></div>
+            <div class="form-group"><label>خصوصیات اخلاقی :</label><textarea id="personality" rows="1" placeholder="صبور، آرام..." required></textarea></div>
+            <div class="form-group"><label>معیار همسر آینده :</label><textarea id="spouseCriteria" rows="1" placeholder="متدین، خوش اخلاق..." required></textarea></div>
+
+            <!-- سابقه ازدواج -->
+            <div class="form-group"><label>سابقه ازدواج :</label><select id="marriageHistory" required><option value="">انتخاب</option><option value="مجرد">مجرد و بدون سابقه ازدواج</option><option value="نامزدی">مطلقه در دوران نامزدی جدا شدم</option><option value="بدون فرزند">مطلقه بدون فرزند هستم</option><option value="با فرزند">مطلقه دارای فرزند هستم</option><option value="همسر زنده">مطلقه همسر قبلی در قید حیات هستند</option><option value="فوت شده">همسر فوت شده</option></select></div>
+
+            <div class="form-group conditional-field" id="marriageDurationField"><label>مدت زندگی مشترک (ماه) :</label><input type="text" id="marriageDuration" placeholder="مثلاً ۶ ماه"></div>
+            <div class="form-group conditional-field" id="marriageRegisteredField"><label>در شناسنامه قید شده است؟ :</label><select id="marriageRegistered"><option value="">انتخاب</option><option>بله</option><option>خیر</option></select></div>
+            <div class="form-group conditional-field" id="childGenderField"><label>جنسیت فرزند :</label><select id="childGender"><option value="">انتخاب</option><option>پسر</option><option>دختر</option></select></div>
+            <div class="form-group conditional-field" id="childAgeField"><label>سن فرزند :</label><input type="number" id="childAge" placeholder="مثلاً ۵"></div>
+            <div class="form-group conditional-field" id="childCustodyField"><label>نحوه حضانت فرزند :</label><textarea id="childCustody" rows="1" placeholder="توضیح دهید..."></textarea></div>
+
+            <div class="form-group"><label>از کدام استان‌ها می‌پذیرید؟ :</label><select id="acceptProvinces" required><option value="">انتخاب</option><option>فرقی ندارد</option><option>فقط استان محل سکونت خودم</option></select></div>
+            <div class="form-group"><label>از کدام شهر می‌پذیرید؟ :</label><select id="acceptCities" required><option value="">انتخاب</option><option>شهر محل سکونت خودم</option><option>سایر شهرهای استان خودم</option><option>فرقی ندارد</option></select></div>
+
+            <!-- شغل همسر -->
+            <div class="form-group"><label>با کدام اصناف ازدواج می‌کنید؟ :</label><select id="spouseJobAccept" required><option value="">انتخاب</option><option>محدودیتی ندارم</option><option>فقط روحانی</option><option>فقط نظامی</option><option>فقط کارمند</option><option value="آزاد">فقط شغل آزاد</option></select></div>
+
+            <div class="form-group conditional-field" id="freeJobField"><label>لطفاً شغل آزاد مورد نظر خود را توضیح دهید :</label><textarea id="freeJobDesc" rows="1" placeholder="مثلاً: نجاری، خیاطی، ..."></textarea></div>
+
+            <!-- ===== اختلاف سنی ===== -->
+            <div class="form-group">
+                <label>اختلاف سنی مطلوب :</label>
+                <select id="ageDiff" required>
+                    <option value="">انتخاب</option>
+                    <option>کوچکتر می‌پذیرم</option>
+                    <option>همسن می‌پذیرم</option>
+                    <option>بزرگتر می‌پذیرم</option>
+                    <option>فرقی ندارد</option>
+                </select>
+            </div>
+
+            <div class="form-group"><label>میزان حداکثر و حداقل تفاوت سنی :</label><input type="text" id="ageRange" placeholder="مثلاً ۳ تا ۵ سال (اختیاری)"></div>
+
+            <div class="form-group"><label>حداقل تحصیلات همسر :</label><select id="minEduSpouse" required><option value="">انتخاب</option><option>بدون تحصیلات</option><option>سیکل</option><option>دیپلم</option><option>فوق دیپلم</option><option>لیسانس</option><option>فوق لیسانس</option><option>دکترا</option></select></div>
+            <div class="form-group"><label>تحصیلات خودتان :</label><select id="selfEducation" required><option value="">انتخاب</option><option>زیر دیپلم</option><option>دیپلم</option><option>فوق دیپلم</option><option>لیسانس</option><option>فوق لیسانس</option><option>دکترا</option></select></div>
+            <div class="form-group"><label>میزان درآمد ماهیانه :</label><select id="income" required><option value="">انتخاب</option><option>کم</option><option>متوسط</option><option>زیاد</option></select></div>
+
+            <!-- ===== دارایی ===== -->
+            <div class="form-group">
+                <label>وضعیت دارایی :</label>
+                <select id="assets" required>
+                    <option value="">انتخاب</option>
+                    <option>خانه و ماشین دارم</option>
+                    <option>خانه و ماشین ندارم</option>
+                    <option>فقط خانه دارم</option>
+                    <option>فقط ماشین دارم</option>
+                    <option>سایر دارم</option>
+                </select>
+            </div>
+
+            <!-- ===== فیلد جدید: توضیح دارایی (اختیاری) ===== -->
+            <div class="form-group">
+                <label>توضیح دارایی :</label>
+                <textarea id="assetsDesc" rows="2" placeholder="در صورت تمایل توضیح بیشتری بدهید... (اختیاری)"></textarea>
+            </div>
+
+            <div class="form-group"><label>توضیحات تکمیلی :</label><textarea id="moreInfo" rows="1" required></textarea></div>
+
+            <div class="form-group"><label>آیدی ایتا :</label><input type="text" id="eitaaId" placeholder="@username" required></div>
+            <div class="form-group"><label>آیدی روبیکا :</label><input type="text" id="rubikaId" placeholder="@id (اختیاری)"></div>
+            <div class="form-group"><label>آیدی بله :</label><input type="text" id="baleId" placeholder="@id (اختیاری)"></div>
+            <div class="form-group"><label>آیدی سروش :</label><input type="text" id="soroushId" placeholder="@id (اختیاری)"></div>
+
+            <div class="form-group"><label>نحوه ارتباط با شما :</label><select id="contactMethod" required onchange="toggleContactFields()"><option value="">انتخاب</option><option>ایتا</option><option>روبیکا</option><option>بله</option><option>سروش</option><option>تلفن</option><option value="رابط">ارتباط با رابط</option></select></div>
+
+            <div class="form-group conditional-field" id="contactAgentPhoneField"><label>شماره تماس رابط :</label><input type="tel" id="agentPhone" placeholder="09123456789"></div>
+            <div class="form-group conditional-field" id="contactAgentIdField"><label>آیدی فضای مجازی رابط :</label><input type="text" id="agentId" placeholder="@username"></div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="rulesCheck">
+                <label for="rulesCheck"><strong onclick="showRules(event)">قوانین و مقررات</strong> را با دقت مطالعه کرده و می‌پذیرم</label>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" id="submitBtn">✅ ثبت اطلاعات</button>
+                <button type="button" onclick="location.href='users.html'">👥 مشاهده کاربران</button>
+                <button type="button" onclick="location.href='admin.html'">🔐 ورود ادمین</button>
+                <button type="button" id="exportBtn" class="export-btn">📥 خروجی JSON</button>
+            </div>
+        </form>
+
+        <div id="messageArea"></div>
+    </div>
+
+    <!-- ===== مودال قوانین ===== -->
+    <div id="rulesModal">
+        <div class="modal-box">
+            <h2>📜 قوانین و مقررات عضویت</h2>
+            <div class="rules-text">
+                <span class="section-title">🛡️ بخش اول: امنیت مالی و جلوگیری از کلاهبرداری</span>
+                <div class="red-line"><strong>⚠️ هشدار جدی:</strong> کلیه امور مالی فقط از طریق آیدی رسمی مدیریت انجام می‌پذیرد.</div>
+                <span class="section-title">🤝 بخش دوم: پروتکل آشنایی</span>
+                <ul class="number-list"><li>جلسات حضوری در اماکن عمومی برگزار شود</li><li>در اولین ملاقات، یک همراه داشته باشید</li></ul>
+                <span class="section-title">🚜 بخش سوم: دلایل حذف</span>
+                <ul class="number-list"><li>درخواست خود فرد</li><li>تغییر آیدی بدون اطلاع</li><li>عدم پاسخگویی به مدت یک هفته</li></ul>
+                <div class="blue-box"><strong>💚 صداقت، شرط اول عضویت است.</strong></div>
+            </div>
+            <button onclick="closeRules()" class="close-btn">بستن</button>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyzM9ZY5Ho0PYu6o_3qBROcPu7z4hc-TDAz-ABX62cc_4ICHKBBNn_Tb5U8uBeTGIES/exec";
+
+        function enterForm() {
+            document.getElementById('splash').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('active');
+        }
+
+        function showRules(e) {
+            e.preventDefault();
+            document.getElementById('rulesModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRules() {
+            document.getElementById('rulesModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        document.getElementById('rulesModal').addEventListener('click', function(e) {
+            if (e.target === this) closeRules();
+        });
+
+        document.getElementById('marriageHistory').addEventListener('change', function() {
+            const val = this.value;
+            document.querySelectorAll('.conditional-field').forEach(el => el.classList.remove('active'));
+            if (val === 'نامزدی') {
+                document.getElementById('marriageDurationField').classList.add('active');
+                document.getElementById('marriageRegisteredField').classList.add('active');
+            }
+            if (val === 'با فرزند') {
+                document.getElementById('childGenderField').classList.add('active');
+                document.getElementById('childAgeField').classList.add('active');
+                document.getElementById('childCustodyField').classList.add('active');
+            }
+        });
+
+        document.getElementById('spouseJobAccept').addEventListener('change', function() {
+            const val = this.value;
+            document.getElementById('freeJobField').classList.toggle('active', val === 'آزاد');
+        });
+
+        function toggleDisabilityField() {
+            const val = document.getElementById('physicalStatus').value;
+            document.getElementById('disabilityField').classList.toggle('active', val === 'معلول');
+        }
+
+        function toggleContactFields() {
+            const val = document.getElementById('contactMethod').value;
+            const isAgent = val === 'رابط';
+            document.getElementById('contactAgentPhoneField').classList.toggle('active', isAgent);
+            document.getElementById('contactAgentIdField').classList.toggle('active', isAgent);
+        }
+
+        function toggleWomenCoverField() {
+            const gender = document.getElementById('gender').value;
+            const womenField = document.getElementById('womenCoverField');
+            const dressField = document.getElementById('dressCodeField');
+            
+            if (gender === 'زن') {
+                womenField.classList.add('active');
+                dressField.classList.remove('active');
+                document.getElementById('dressCode').removeAttribute('required');
+                document.getElementById('womenCover').setAttribute('required', 'required');
+            } else {
+                womenField.classList.remove('active');
+                dressField.classList.add('active');
+                document.getElementById('womenCover').removeAttribute('required');
+                document.getElementById('dressCode').setAttribute('required', 'required');
+            }
+        }
+
+        function updateSpouseJobOptions() {
+            const gender = document.getElementById('gender').value;
+            const select = document.getElementById('spouseJobAccept');
+            const currentValue = select.value;
+            select.innerHTML = '';
+            if (gender === 'مرد') {
+                const options = [
+                    { value: '', text: 'انتخاب' },
+                    { value: 'محدودیتی ندارم', text: 'محدودیتی ندارم' },
+                    { value: 'خانه دار', text: 'خانه‌دار' },
+                    { value: 'کارمند', text: 'کارمند' },
+                    { value: 'روحانی', text: 'روحانی' }
+                ];
+                options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.value;
+                    option.textContent = opt.text;
+                    if (opt.value === currentValue && currentValue !== '') option.selected = true;
+                    select.appendChild(option);
+                });
+            } else {
+                const options = [
+                    { value: '', text: 'انتخاب' },
+                    { value: 'محدودیتی ندارم', text: 'محدودیتی ندارم' },
+                    { value: 'فقط روحانی', text: 'فقط روحانی' },
+                    { value: 'فقط نظامی', text: 'فقط نظامی' },
+                    { value: 'فقط کارمند', text: 'فقط کارمند' },
+                    { value: 'آزاد', text: 'فقط شغل آزاد' }
+                ];
+                options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.value;
+                    option.textContent = opt.text;
+                    if (opt.value === currentValue && currentValue !== '') option.selected = true;
+                    select.appendChild(option);
+                });
+            }
+        }
+
+        let usersDatabase = [];
+
+        function loadFromLocal() {
+            const stored = localStorage.getItem('moddat_users_v4');
+            if (stored) usersDatabase = JSON.parse(stored);
+        }
+
+        function saveToLocal() {
+            localStorage.setItem('moddat_users_v4', JSON.stringify(usersDatabase));
+        }
+
+        function showMessage(msg, isError = false) {
+            const div = document.getElementById('messageArea');
+            div.innerHTML = `<div class="status ${isError ? 'error' : 'success'}">${msg}</div>`;
+            setTimeout(() => div.innerHTML = '', 5000);
+        }
+
+        async function submitToSheet(data) {
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        document.getElementById('submitBtn').onclick = async function() {
+            if (!document.getElementById('rulesCheck').checked) {
+                showMessage('❌ لطفاً ابتدا قوانین و مقررات را مطالعه و تأیید کنید', true);
+                return;
+            }
+
+            const phone1 = document.getElementById('phone1').value.trim();
+            const phone2 = document.getElementById('phone2').value.trim();
+            const phoneRegex = /^09[0-9]{9}$/;
+            if (!phoneRegex.test(phone1)) {
+                showMessage('❌ شماره تماس ۱ باید ۱۱ رقم و با ۰۹ شروع شود', true);
+                return;
+            }
+            if (phone2 && !phoneRegex.test(phone2)) {
+                showMessage('❌ شماره تماس ۲ نامعتبر است', true);
+                return;
+            }
+
+            const eitaaId = document.getElementById('eitaaId').value.trim();
+            if (!eitaaId) {
+                showMessage('❌ لطفاً آیدی ایتا را وارد کنید', true);
+                return;
+            }
+
+            // ===== بررسی سال تولد (باید با 13 شروع شود و 4 رقمی باشد) =====
+            const birthYear = document.getElementById('birthYear').value.trim();
+            if (!birthYear.startsWith('13')) {
+                showMessage('❌ سال تولد باید با ۱۳ شروع شود (مثلاً ۱۳۵۷)', true);
+                return;
+            }
+            if (birthYear.length !== 4) {
+                showMessage('❌ سال تولد باید ۴ رقمی باشد (مثلاً ۱۳۵۷)', true);
+                return;
+            }
+
+            const requiredFields = [
+                'gender', 'fullname', 'birthYear', 'birthMonth', 'birthDay',
+                'height', 'weight', 'religion', 'fatherJob', 'motherJob',
+                'skinColor', 'eyeColor', 'jobType',
+                'physicalStatus', 'smoking', 'familyCount', 'childOrder',
+                'province', 'city', 'neighborhood', 'phone1',
+                'personality', 'spouseCriteria', 'marriageHistory',
+                'acceptProvinces', 'acceptCities', 'spouseJobAccept',
+                'ageDiff', 'minEduSpouse', 'selfEducation',
+                'income', 'assets', 'moreInfo', 'eitaaId', 'contactMethod'
+            ];
+
+            for (let id of requiredFields) {
+                const el = document.getElementById(id);
+                if (!el || !el.value.trim()) {
+                    showMessage(`❌ لطفاً فیلد "${el.previousElementSibling?.innerText?.trim() || id}" را پر کنید`, true);
+                    return;
+                }
+            }
+
+            // ===== بررسی پوشش برای خانم‌ها =====
+            const gender = document.getElementById('gender').value;
+            if (gender === 'زن') {
+                const womenCover = document.getElementById('womenCover').value;
+                if (!womenCover) {
+                    showMessage('❌ لطفاً نوع پوشش خود را انتخاب کنید', true);
+                    return;
+                }
+            }
+
+            const year = parseInt(document.getElementById('birthYear').value);
+            let decade = 'سایر';
+            if (year >= 1340 && year <= 1359) decade = 'دهه چهل و پنجاه';
+            else if (year >= 1360 && year <= 1369) decade = 'دهه شصت';
+            else if (year >= 1370 && year <= 1379) decade = 'دهه هفتاد';
+            else if (year >= 1380 && year <= 1389) decade = 'دهه هشتاد';
+
+            const newUser = {
+                gender: document.getElementById('gender').value,
+                fullname: document.getElementById('fullname').value.trim(),
+                birthYear: document.getElementById('birthYear').value,
+                birthMonth: document.getElementById('birthMonth').value,
+                birthDay: document.getElementById('birthDay').value,
+                height: document.getElementById('height').value,
+                weight: document.getElementById('weight').value,
+                religion: document.getElementById('religion').value,
+                fatherJob: document.getElementById('fatherJob').value,
+                motherJob: document.getElementById('motherJob').value,
+                skinColor: document.getElementById('skinColor').value,
+                eyeColor: document.getElementById('eyeColor').value,
+                womenCover: document.getElementById('womenCover').value || '',
+                dressCode: document.getElementById('dressCode').value,
+                jobType: document.getElementById('jobType').value,
+                jobDesc: document.getElementById('jobDesc').value,
+                physicalStatus: document.getElementById('physicalStatus').value,
+                disabilityDesc: document.getElementById('disabilityDesc').value || '',
+                smoking: document.getElementById('smoking').value,
+                familyCount: document.getElementById('familyCount').value,
+                childOrder: document.getElementById('childOrder').value,
+                province: document.getElementById('province').value,
+                city: document.getElementById('city').value,
+                neighborhood: document.getElementById('neighborhood').value,
+                phone1: phone1,
+                phone2: phone2,
+                personality: document.getElementById('personality').value,
+                spouseCriteria: document.getElementById('spouseCriteria').value,
+                marriageHistory: document.getElementById('marriageHistory').value,
+                marriageDuration: document.getElementById('marriageDuration').value || '',
+                marriageRegistered: document.getElementById('marriageRegistered').value || '',
+                childGender: document.getElementById('childGender').value || '',
+                childAge: document.getElementById('childAge').value || '',
+                childCustody: document.getElementById('childCustody').value || '',
+                acceptProvinces: document.getElementById('acceptProvinces').value,
+                acceptCities: document.getElementById('acceptCities').value,
+                spouseJobAccept: document.getElementById('spouseJobAccept').value,
+                freeJobDesc: document.getElementById('freeJobDesc').value || '',
+                ageDiff: document.getElementById('ageDiff').value,
+                ageRange: document.getElementById('ageRange').value || '',
+                minEduSpouse: document.getElementById('minEduSpouse').value,
+                selfEducation: document.getElementById('selfEducation').value,
+                income: document.getElementById('income').value,
+                assets: document.getElementById('assets').value,
+                assetsDesc: document.getElementById('assetsDesc').value || '',
+                moreInfo: document.getElementById('moreInfo').value,
+                eitaaId: document.getElementById('eitaaId').value.trim(),
+                rubikaId: document.getElementById('rubikaId').value || '',
+                baleId: document.getElementById('baleId').value || '',
+                soroushId: document.getElementById('soroushId').value || '',
+                contactMethod: document.getElementById('contactMethod').value,
+                agentPhone: document.getElementById('agentPhone').value || '',
+                agentId: document.getElementById('agentId').value || '',
+                timestamp: new Date().toLocaleString('fa-IR'),
+                decade: decade
+            };
+
+            usersDatabase.unshift(newUser);
+            saveToLocal();
+            await submitToSheet(newUser);
+
+            showMessage('✅ اطلاعات شما با موفقیت ثبت شد!');
+            document.getElementById('fullname').value = '';
+            document.getElementById('phone1').value = '';
+            document.getElementById('phone2').value = '';
+            document.getElementById('eitaaId').value = '';
+        };
+
+        document.getElementById('exportBtn').onclick = function() {
+            if (usersDatabase.length === 0) {
+                showMessage('هیچ داده‌ای برای خروجی وجود ندارد', true);
+                return;
+            }
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([JSON.stringify(usersDatabase, null, 2)], { type: 'application/json' }));
+            a.download = `moddat_${Date.now()}.json`;
+            a.click();
+            showMessage('📥 خروجی با موفقیت دانلود شد');
+        };
+
+        loadFromLocal();
+        updateSpouseJobOptions();
+    </script>
+
+</body>
+</html>

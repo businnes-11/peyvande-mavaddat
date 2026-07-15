@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👥 لیست کاربران - پیوند مودَّت</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            background: linear-gradient(135deg, #B0E0E6 0%, #8BC4D0 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 25px 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .page-header h1 {
+            color: #004A7C;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .page-header h1 span {
+            color: #D4818A;
+        }
+        .page-header .header-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .page-header .header-actions button {
+            background: #004A7C;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+        }
+        .page-header .header-actions button:hover {
+            background: #002f4a;
+            transform: scale(1.03);
+        }
+        .page-header .header-actions button.back-btn {
+            background: #D4818A;
+            color: #222;
+        }
+        .page-header .header-actions button.back-btn:hover {
+            background: #c06a73;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stats-row .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 18px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            border: 2px solid rgba(0, 74, 124, 0.15);
+            transition: 0.3s;
+        }
+        .stats-row .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: #004A7C;
+        }
+        .stats-row .stat-card .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #004A7C;
+        }
+        .stats-row .stat-card .label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .filter-area {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 25px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .filter-area input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 20px;
+            border: 2px solid #1A8A8A;
+            border-radius: 40px;
+            font-size: 14px;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            background: white;
+            transition: 0.3s;
+        }
+        .filter-area input:focus {
+            outline: none;
+            border-color: #004A7C;
+            box-shadow: 0 0 0 3px rgba(0, 74, 124, 0.15);
+        }
+        .filter-area .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .filter-area .filter-buttons button {
+            padding: 10px 22px;
+            border: 2px solid #004A7C;
+            border-radius: 40px;
+            background: transparent;
+            color: #004A7C;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: 0.3s;
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+        }
+        .filter-area .filter-buttons button:hover,
+        .filter-area .filter-buttons button.active {
+            background: #004A7C;
+            color: white;
+        }
+        .filter-area .filter-buttons button.clear-btn {
+            border-color: #D4818A;
+            color: #D4818A;
+        }
+        .filter-area .filter-buttons button.clear-btn:hover {
+            background: #D4818A;
+            color: white;
+        }
+
+        .users-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+        }
+
+        .user-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 22px 25px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 2px solid rgba(0, 74, 124, 0.08);
+            transition: 0.3s;
+            position: relative;
+        }
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+            border-color: #004A7C;
+        }
+
+        .user-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .user-card .card-header .name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #004A7C;
+        }
+        .user-card .card-header .gender-icon {
+            font-size: 28px;
+        }
+
+        .user-card .badge {
+            background: #004A7C;
+            color: white;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .user-card .badge.duplicate {
+            background: #C5A200;
+        }
+
+        .user-card .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 15px;
+            font-size: 13px;
+            color: #444;
+            line-height: 1.9;
+        }
+        .user-card .info-grid .full {
+            grid-column: 1 / -1;
+        }
+        .user-card .info-grid strong {
+            color: #222;
+        }
+
+        .user-card .card-footer {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .no-result {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 18px;
+            color: #666;
+            grid-column: 1 / -1;
+        }
+        .no-result .icon {
+            font-size: 60px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .loading-area {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 18px;
+            color: #666;
+        }
+        .loading-area .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e0e0e0;
+            border-top-color: #004A7C;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 15px 10px; }
+            .page-header { padding: 18px 20px; flex-direction: column; text-align: center; }
+            .page-header h1 { font-size: 22px; }
+            .users-grid { grid-template-columns: 1fr; }
+            .user-card .info-grid { grid-template-columns: 1fr; }
+            .filter-area { flex-direction: column; }
+            .filter-area input { width: 100%; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .stats-row { grid-template-columns: 1fr; }
+            .page-header .header-actions button { width: 100%; }
+            .filter-area .filter-buttons { width: 100%; }
+            .filter-area .filter-buttons button { flex: 1; text-align: center; font-size: 12px; padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>👥 <span>لیست</span> کاربران</h1>
+        <div class="header-actions">
+            <button onclick="location.reload()">🔄 بروزرسانی</button>
+            <button onclick="location.href='index.html'" class="back-btn">🏠 بازگشت</button>
+        </div>
+    </div>
+
+    <div class="stats-row" id="statsRow">
+        <div class="stat-card">
+            <div class="number" id="totalUsers">0</div>
+            <div class="label">👤 کل کاربران</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" id="maleCount">0</div>
+            <div class="label">👨 مردان</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" id="femaleCount">0</div>
+            <div class="label">👩 زنان</div>
+        </div>
+        <div class="stat-card">
+            <div class="number" id="decadeCount">0</div>
+            <div class="label">📅 دهه‌های مختلف</div>
+        </div>
+    </div>
+
+    <div class="filter-area">
+        <input type="text" id="searchInput" placeholder="🔍 جستجو بر اساس استان، شهر، دهه..." oninput="filterUsers()">
+        <div class="filter-buttons">
+            <button class="active" data-filter="all" onclick="setFilter('all')">همه</button>
+            <button data-filter="دهه چهل و پنجاه" onclick="setFilter('دهه چهل و پنجاه')">دهه ۴۰ و ۵۰</button>
+            <button data-filter="دهه شصت" onclick="setFilter('دهه شصت')">دهه ۶۰</button>
+            <button data-filter="دهه هفتاد" onclick="setFilter('دهه هفتاد')">دهه ۷۰</button>
+            <button data-filter="دهه هشتاد" onclick="setFilter('دهه هشتاد')">دهه ۸۰</button>
+            <button class="clear-btn" onclick="clearFilters()">❌ پاک کردن</button>
+        </div>
+    </div>
+
+    <div id="usersContainer" class="users-grid">
+        <div class="loading-area">
+            <div class="spinner"></div>
+            در حال بارگذاری اطلاعات...
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyzM9ZY5Ho0PYu6o_3qBROcPu7z4hc-TDAz-ABX62cc_4ICHKBBNn_Tb5U8uBeTGIES/exec";
+
+    let allUsers = [];
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    async function loadUsers() {
+        try {
+            const res = await fetch(SCRIPT_URL);
+            if (!res.ok) throw new Error('خطا در ارتباط با سرور');
+            const data = await res.json();
+            allUsers = Array.isArray(data) ? data : [];
+            updateStats();
+            renderUsers();
+        } catch (e) {
+            document.getElementById('usersContainer').innerHTML = `
+                <div class="no-result">
+                    <span class="icon">❌</span>
+                    خطا در بارگذاری اطلاعات.<br>
+                    لطفاً دوباره تلاش کنید.
+                </div>
+            `;
+        }
+    }
+
+    function updateStats() {
+        const total = allUsers.length;
+        const males = allUsers.filter(u => u.gender === 'مرد').length;
+        const females = allUsers.filter(u => u.gender === 'زن').length;
+        const decades = new Set(allUsers.map(u => u.decade).filter(Boolean));
+
+        document.getElementById('totalUsers').textContent = total;
+        document.getElementById('maleCount').textContent = males;
+        document.getElementById('femaleCount').textContent = females;
+        document.getElementById('decadeCount').textContent = decades.size;
+    }
+
+    function getFilteredUsers() {
+        let filtered = allUsers;
+
+        if (currentFilter !== 'all') {
+            filtered = filtered.filter(u => u.decade === currentFilter);
+        }
+
+        if (currentSearch.trim()) {
+            const search = currentSearch.trim().toLowerCase();
+            filtered = filtered.filter(u => {
+                const searchable = [
+                    u.province, u.city, u.gender, u.jobType,
+                    u.selfEducation, u.spouseCriteria, u.moreInfo,
+                    u.personality, u.decade, u.assetsDesc,
+                    u.womenCover, u.dressCode
+                ].join(' ').toLowerCase();
+                return searchable.includes(search);
+            });
+        }
+
+        return filtered;
+    }
+
+    function getDisplayName(index) {
+        return `پیوند مودت کد ${index + 1}`;
+    }
+
+    function renderUsers() {
+        const container = document.getElementById('usersContainer');
+        const filtered = getFilteredUsers();
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="no-result">
+                    <span class="icon">📭</span>
+                    هیچ کاربری با این مشخصات یافت نشد
+                </div>
+            `;
+            return;
+        }
+
+        let html = '';
+        filtered.forEach((user, index) => {
+            const genderIcon = user.gender === 'مرد' ? '👨' : user.gender === 'زن' ? '👩' : '👤';
+            const badgeClass = user.decade === 'سایر' ? 'duplicate' : '';
+            const displayName = getDisplayName(index);
+            const coverType = user.womenCover || user.dressCode || '-';
+
+            html += `
+                <div class="user-card">
+                    <div class="card-header">
+                        <span class="name">${genderIcon} ${displayName}</span>
+                        <span class="gender-icon">${genderIcon}</span>
+                    </div>
+
+                    <span class="badge ${badgeClass}">${user.decade || 'نامشخص'}</span>
+
+                    <div class="info-grid">
+                        <div><strong>🚻 جنسیت:</strong> ${user.gender || '-'}</div>
+                        <div><strong>📍 استان:</strong> ${user.province || '-'}</div>
+                        <div><strong>🏙️ شهرستان:</strong> ${user.city || '-'}</div>
+                        <div><strong>📅 تولد:</strong> ${user.birthYear}/${user.birthMonth}/${user.birthDay}</div>
+                        <div><strong>📏 قد:</strong> ${user.height || '-'} سانتی‌متر</div>
+                        <div><strong>⚖️ وزن:</strong> ${user.weight || '-'} کیلوگرم</div>
+                        <div><strong>🎓 تحصیلات:</strong> ${user.selfEducation || '-'}</div>
+                        <div><strong>💼 شغل:</strong> ${user.jobType || '-'} ${user.jobDesc ? ' - ' + user.jobDesc : ''}</div>
+                        <div><strong>👔 شغل پدر:</strong> ${user.fatherJob || '-'}</div>
+                        <div><strong>👗 شغل مادر:</strong> ${user.motherJob || '-'}</div>
+                        <div><strong>🎨 رنگ پوست:</strong> ${user.skinColor || '-'}</div>
+                        <div><strong>👁️ رنگ چشم:</strong> ${user.eyeColor || '-'}</div>
+                        <div><strong>🧕 نوع پوشش:</strong> ${coverType}</div>
+                        <div><strong>🩺 وضعیت جسمی:</strong> ${user.physicalStatus || '-'}</div>
+                        ${user.disabilityDesc ? `<div class="full"><strong>📝 توضیحات معلولیت:</strong> ${user.disabilityDesc}</div>` : ''}
+                        <div><strong>🚬 دخانیات:</strong> ${user.smoking || '-'}</div>
+                        <div><strong>👨‍👩‍👧‍👦 تعداد خانواده:</strong> ${user.familyCount || '-'}</div>
+                        <div><strong>👶 فرزند چندم:</strong> ${user.childOrder || '-'}</div>
+                        <div><strong>💚 خصوصیات اخلاقی:</strong> ${user.personality || '-'}</div>
+                        <div class="full"><strong>🤵 معیار همسر:</strong> ${user.spouseCriteria || '-'}</div>
+                        <div><strong>💍 سابقه ازدواج:</strong> ${user.marriageHistory || '-'}</div>
+                        ${user.marriageDuration ? `<div><strong>⏳ مدت زندگی مشترک:</strong> ${user.marriageDuration}</div>` : ''}
+                        ${user.marriageRegistered ? `<div><strong>📄 ثبت در شناسنامه:</strong> ${user.marriageRegistered}</div>` : ''}
+                        ${user.childGender ? `<div><strong>👶 جنسیت فرزند:</strong> ${user.childGender} | سن: ${user.childAge || '-'}</div>` : ''}
+                        ${user.childCustody ? `<div class="full"><strong>📋 حضانت فرزند:</strong> ${user.childCustody}</div>` : ''}
+                        <div><strong>🗺️ استان‌های قابل قبول:</strong> ${user.acceptProvinces || '-'}</div>
+                        <div><strong>🏙️ شهرهای قابل قبول:</strong> ${user.acceptCities || '-'}</div>
+                        <div><strong>💼 شغل ایده‌آل همسر:</strong> ${user.spouseJobAccept || '-'}</div>
+                        ${user.freeJobDesc ? `<div class="full"><strong>📝 شغل آزاد مد نظر:</strong> ${user.freeJobDesc}</div>` : ''}
+                        <div><strong>📊 اختلاف سنی مطلوب:</strong> ${user.ageDiff || '-'}</div>
+                        <div><strong>📏 محدوده سنی:</strong> ${user.ageRange || '-'}</div>
+                        <div><strong>🎓 تحصیلات همسر:</strong> ${user.minEduSpouse || '-'}</div>
+                        <div><strong>💰 درآمد:</strong> ${user.income || '-'}</div>
+                        <div><strong>🏠 وضعیت دارایی:</strong> ${user.assets || '-'}</div>
+                        ${user.assetsDesc ? `<div class="full"><strong>📝 توضیح دارایی:</strong> ${user.assetsDesc}</div>` : ''}
+                        <div class="full"><strong>📝 توضیحات تکمیلی:</strong> ${user.moreInfo || '-'}</div>
+                        <div><strong>📞 نحوه ارتباط:</strong> ${user.contactMethod || '-'}</div>
+                        ${user.agentPhone ? `<div><strong>📞 شماره رابط:</strong> ${user.agentPhone}</div>` : ''}
+                        ${user.agentId ? `<div><strong>🆔 آیدی رابط:</strong> ${user.agentId}</div>` : ''}
+                    </div>
+
+                    <div class="card-footer">
+                        <span>🕐 ${user.timestamp || ''}</span>
+                        <span>#${index + 1}</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+    }
+
+    function setFilter(filter) {
+        currentFilter = filter;
+        document.querySelectorAll('.filter-area .filter-buttons button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`.filter-area .filter-buttons button[data-filter="${filter}"]`)?.classList.add('active');
+        renderUsers();
+    }
+
+    function filterUsers() {
+        currentSearch = document.getElementById('searchInput').value;
+        renderUsers();
+    }
+
+    function clearFilters() {
+        document.getElementById('searchInput').value = '';
+        currentSearch = '';
+        currentFilter = 'all';
+        document.querySelectorAll('.filter-area .filter-buttons button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector('.filter-area .filter-buttons button[data-filter="all"]')?.classList.add('active');
+        renderUsers();
+    }
+
+    loadUsers();
+</script>
+
+</body>
+</html>
